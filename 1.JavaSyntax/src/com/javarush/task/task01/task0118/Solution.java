@@ -24,3 +24,4 @@ public class Solution {
         System.out.println("summa = " + summa);
     }
 }
+/* git testing */
