@@ -19,4 +19,3 @@ public class Circle {
 
     }
 }
-/* 8%, 1, 1.11, 20248 */

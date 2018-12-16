@@ -18,4 +18,4 @@ public class Solution {
         System.out.println("Sum = " + sum);
     }
 }
-/* 18%, 1, 1.25, 51090 */
+

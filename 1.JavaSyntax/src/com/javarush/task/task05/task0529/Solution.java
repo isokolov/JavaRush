@@ -26,4 +26,4 @@ public class Solution {
         System.out.println(sum);
     }
 }
-/* 19%, 2, 2.07, 53198 */
+

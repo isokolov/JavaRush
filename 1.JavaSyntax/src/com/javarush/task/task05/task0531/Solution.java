@@ -36,4 +36,4 @@ public class Solution {
         return Math.min(min3, e);
     }
 }
-/* 22%, 1, 1.42, 48100 */
+

@@ -26,4 +26,5 @@ public class Solution {
         System.out.println(average);
     }
 }
-/* 41%, 1, 2.00, 20289 */
+
+

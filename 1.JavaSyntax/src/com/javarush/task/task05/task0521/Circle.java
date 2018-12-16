@@ -36,4 +36,4 @@ public class Circle {
         System.out.println(anotherCircle.x + " " + anotherCircle.y + " " + anotherCircle.radius);
     }
 }
-/* 50%, 1, 2.33, 19991 */
+
