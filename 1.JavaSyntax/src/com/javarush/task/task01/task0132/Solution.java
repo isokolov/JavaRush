@@ -15,6 +15,7 @@ public class Solution {
         String numberString = String.valueOf(number);
         for (int i = 0; i < numberString.length() ; i++) {
             sum += Integer.parseInt(String.valueOf(numberString.charAt(i)));
+            //sum += Character.getNumericValue(numberString.charAt(i));
         }
 
         return sum;
