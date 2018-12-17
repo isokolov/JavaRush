@@ -24,6 +24,18 @@ public class Solution {
             average = (double) sum / index;
         }
         System.out.println(average);
+        /*
+        int i = 0;
+        int count = 0;
+        double sum = 0;
+        while (i != -1) {
+            i = Integer.parseInt(br.readLine());
+            sum += i;
+            count++;
+        }
+        double avg = (sum+1) / (count-1); */
+        //1 2 2 4 5 -1
+
     }
 }
 

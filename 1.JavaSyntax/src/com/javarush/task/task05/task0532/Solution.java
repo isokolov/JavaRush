@@ -24,6 +24,20 @@ public class Solution {
         }
 
         System.out.println(maximum);
+
+        /*
+        int N = Integer.parseInt(reader.readLine());
+        if (N<=0) return;
+
+        int a;
+        maximum = Integer.parseInt(reader.readLine());
+        for (int i=0; i<N-1;i++) {
+            a = Integer.parseInt(reader.readLine());
+            if (a>maximum) {
+                maximum = a;
+            }
+        }
+         */
     }
 }
 

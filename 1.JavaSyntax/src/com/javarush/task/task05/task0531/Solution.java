@@ -35,5 +35,16 @@ public class Solution {
 
         return Math.min(min3, e);
     }
+
+    /*
+    public static int min(int a, int b, int c, int d, int e) {
+        int minimum = a < b ? a : b;
+        minimum = c < minimum ? c : minimum;
+        minimum = d < minimum ? d : minimum;
+        minimum = e < minimum ? e : minimum;
+
+        return minimum;
+    }
+     */
 }
 

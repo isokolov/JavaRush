@@ -24,6 +24,22 @@ public class Solution {
         }
 
         System.out.println(sum);
+        /*
+        String inp = "";
+        int sum = 0;
+        int a = 0;
+
+        while (!inp.equals("сумма")) {
+            inp =  br.readLine();
+            try {
+                a = Integer.parseInt(inp);
+                sum += a;
+            } catch (NumberFormatException e) {
+                continue;
+            }
+        }
+        System.out.println(sum);
+         */
     }
 }
 
