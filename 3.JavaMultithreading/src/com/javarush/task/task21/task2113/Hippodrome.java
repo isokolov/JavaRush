@@ -6,9 +6,14 @@ public class Hippodrome {
 
     private List<Horse> horses;
 
+    public Hippodrome(List<Horse> list) {
+        horses = list;
+    }
+
     public List<Horse> getHorses() {
         return horses;
     }
+
 
     public static void main(String[] args) {
     }
