@@ -40,5 +40,11 @@ public class Horse {
         distance += speed * Math.random();
     }
 
-    public void print() {}
+    public void print() {
+        int points = (int) distance;
+        for (int i = 0; i < points; i++) {
+            System.out.print(".");
+        }
+        System.out.println(getName());
+    }
 }
