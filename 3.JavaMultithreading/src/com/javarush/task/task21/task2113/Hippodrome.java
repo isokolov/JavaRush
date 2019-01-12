@@ -71,5 +71,6 @@ public class Hippodrome {
         newHorses.add(horse3);
         game = new Hippodrome(newHorses);
         game.run();
+        game.printWinner();
     }
 }
