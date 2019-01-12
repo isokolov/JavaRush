@@ -16,11 +16,13 @@ public class Hippodrome {
         return horses;
     }
 
-    public void run() throws InterruptedException {
+    public void run() {
         for (int i = 0; i < 100; i++) {
             move();
             print();
-            Thread.sleep(200);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException exception) {}
         }
     }
 
@@ -50,5 +52,6 @@ public class Hippodrome {
         newHorses.add(horse2);
         newHorses.add(horse3);
         game = new Hippodrome(newHorses);
+        game.run();
     }
 }
