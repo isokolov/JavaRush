@@ -1,9 +1,7 @@
 package com.javarush.task.task13.task1318;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Scanner;
-import java.io.FileInputStream;
 
 /* 
 Чтение файла
@@ -13,7 +11,18 @@ import java.io.FileInputStream;
 */
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // напишите тут ваш код
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        InputStream inputStream = new FileInputStream(reader.readLine());
+
+        while(inputStream.available() > 0) {
+            int data = inputStream.read();
+            System.out.print((char)data);
+        }
+
+        reader.close();
+        inputStream.close();
     }
 }
+/* 75%, 1, 3.85, 18658 */
