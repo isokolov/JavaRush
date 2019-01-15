@@ -1,72 +1,131 @@
 package com.javarush.task.task23.task2312;
 
-public class Room {
+import java.awt.event.KeyEvent;
 
+public class Room {
     private int width;
     private int height;
     private Snake snake;
     private Mouse mouse;
-    static Room game;
 
-    public Room(int widht, int height, Snake snake) {
-        this.width = widht;
+    public static Room game;
+
+    public Room(int width, int height, Snake snake) {
+        this.width = width;
         this.height = height;
         this.snake = snake;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int wifth) {
-        this.width = wifth;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+        game = this;
     }
 
     public Snake getSnake() {
         return snake;
     }
 
-    public void setSnake(Snake snake) {
-        this.snake = snake;
-    }
-
     public Mouse getMouse() {
         return mouse;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setSnake(Snake snake) {
+        this.snake = snake;
     }
 
     public void setMouse(Mouse mouse) {
         this.mouse = mouse;
     }
 
-    public void run() {}
+    /**
+     * Основной цикл программы.
+     * Тут происходят все важные действия
+     */
+    public void run() {
+        //Создаем объект "наблюдатель за клавиатурой" и стартуем его.
+        KeyboardObserver keyboardObserver = new KeyboardObserver();
+        keyboardObserver.start();
 
-    public void print() {}
+        //пока змея жива
+        while (snake.isAlive()) {
+            //"наблюдатель" содержит события о нажатии клавиш?
+            if (keyboardObserver.hasKeyEvents()) {
+                KeyEvent event = keyboardObserver.getEventFromTop();
+                //Если равно символу 'q' - выйти из игры.
+                if (event.getKeyChar() == 'q') return;
 
-    public void sleep() {}
+                //Если "стрелка влево" - сдвинуть фигурку влево
+                if (event.getKeyCode() == KeyEvent.VK_LEFT)
+                    snake.setDirection(SnakeDirection.LEFT);
+                    //Если "стрелка вправо" - сдвинуть фигурку вправо
+                else if (event.getKeyCode() == KeyEvent.VK_RIGHT)
+                    snake.setDirection(SnakeDirection.RIGHT);
+                    //Если "стрелка вверх" - сдвинуть фигурку вверх
+                else if (event.getKeyCode() == KeyEvent.VK_UP)
+                    snake.setDirection(SnakeDirection.UP);
+                    //Если "стрелка вниз" - сдвинуть фигурку вниз
+                else if (event.getKeyCode() == KeyEvent.VK_DOWN)
+                    snake.setDirection(SnakeDirection.DOWN);
+            }
 
-    public void createMouse() {
-        int x = (int) (Math.random() * width);
-        int y = (int) (Math.random() * height);
-        mouse = new Mouse(x, y);
+            snake.move();   //двигаем змею
+            print();        //отображаем текущее состояние игры
+            sleep();        //пауза между ходами
+        }
+
+        System.out.println("Game Over!");
+    }
+
+    public void print() {
+        //Создаем массив, куда будем "рисовать" текущее состояние игры
+        //Рисуем все кусочки змеи
+        //Рисуем мышь
+        //Выводим все это на экран
     }
 
     public void eatMouse() {
         createMouse();
     }
 
+    public void createMouse() {
+        int x = (int) (Math.random() * width);
+        int y = (int) (Math.random() * height);
+
+        mouse = new Mouse(x, y);
+    }
+
     public static void main(String[] args) {
-        Snake snake = new Snake(3, 3);
-        game = new Room(20, 20, snake);
-        snake.setDirection(SnakeDirection.DOWN);
+        game = new Room(20, 20, new Snake(10, 10));
+        game.snake.setDirection(SnakeDirection.DOWN);
         game.createMouse();
         game.run();
+    }
+
+    public void sleep() {
+        // делаем паузу, длинна которой зависит от длинны змеи
+        try {
+            int initialDelay = 520;
+            int snakeSize = getSnake().getSections().size();
+            Thread.sleep(500);
+            if (snakeSize > 1) {
+                int delay = (snakeSize < 15) ? initialDelay - snakeSize * 20 : 200;
+                Thread.sleep(delay);
+            }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
