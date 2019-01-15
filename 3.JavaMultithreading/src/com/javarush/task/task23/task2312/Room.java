@@ -6,6 +6,7 @@ public class Room {
     private int height;
     private Snake snake;
     private Mouse mouse;
+    static Room game;
 
     public Room(int widht, int height, Snake snake) {
         this.width = widht;
@@ -45,7 +46,13 @@ public class Room {
         this.mouse = mouse;
     }
 
+    public void run() {}
+
+    public void print() {}
+
     public static void main(String[] args) {
-        
+        Snake snake = new Snake(3, 3);
+        game = new Room(20, 20, snake);
+        snake.setDirection(SnakeDirection.DOWN);
     }
 }
