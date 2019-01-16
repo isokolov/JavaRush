@@ -15,7 +15,7 @@ public class Stand extends BaseObject {
         speed = 1;
         direction = 0;
     }
-
+    
     public double getSpeed() {
         return speed;
     }
@@ -29,8 +29,16 @@ public class Stand extends BaseObject {
 
     }
 
+    public void moveLeft() {
+        direction = -1;
+    }
+
+    public void moveRight() {
+        direction = 1;
+    }
+
     @Override
     public void move() {
-
+        x += speed * direction;
     }
 }
