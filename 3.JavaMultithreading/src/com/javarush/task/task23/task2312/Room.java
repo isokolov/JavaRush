@@ -1,6 +1,7 @@
 package com.javarush.task.task23.task2312;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class Room {
     private int width;
@@ -93,6 +94,45 @@ public class Room {
         //Рисуем все кусочки змеи
         //Рисуем мышь
         //Выводим все это на экран
+        int[][] screen = new int[height][width];
+        List<SnakeSection> snakeSections = snake.getSections();
+
+        for (SnakeSection snakeSection : snakeSections)
+            screen[snakeSection.getY()][snakeSection.getX()] = 1;
+
+        screen[snake.getY()][snake.getX()] = 2;
+        screen[mouse.getY()][mouse.getX()] = 3;
+
+        for (int j = 0; j < height; j++) {
+            for (int i = 0; i < width; i++) {
+                if (screen[j][i] == 1)
+                    System.out.print("x");
+                else if (screen[j][i] == 2)
+                    System.out.print("X");
+                else if (screen[j][i] == 3)
+                    System.out.print("^");
+                else
+                    System.out.print(".");
+            }
+            System.out.println();
+        }
+        /*char matrix[][] = new char[height][width];
+        for (int i = 0; i < height ; i++) {
+            for (int j = 0; j < width ; j++) {
+                if (mouse.getX() == j && mouse.getY() == i) {
+                    matrix[i][j] = '^';
+                }
+                if (snake.getSections().get(0).getX() == j && snake.getSections().get(0).getY() == i) {
+                    matrix[i][j] = 'X';
+                }
+                for(SnakeSection snakeSection: snake.getSections()) {
+                    if (snakeSection.getX() == j && snakeSection.getY() == i) {
+                        matrix[i][j] = 'x';
+                    }
+                }
+            }
+        }*/
+
     }
 
     public void eatMouse() {
@@ -123,7 +163,14 @@ public class Room {
                 int delay = (snakeSize < 15) ? initialDelay - snakeSize * 20 : 200;
                 Thread.sleep(delay);
             }
-
+            /*for (int i = 1; i <= getSnake().getSections().size(); i++) {
+                if (i > 1 && i <= 15) {
+                    Thread.sleep(500 - 20 * (i - 1));
+                }
+                else {
+                    Thread.sleep(200);
+                }
+            }*/
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
