@@ -61,7 +61,7 @@ public class Arkanoid {
     }
 
     public void run() {
-
+        
     }
 
     public static void main(String[] args) {
