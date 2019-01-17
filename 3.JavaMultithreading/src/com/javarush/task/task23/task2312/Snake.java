@@ -75,5 +75,35 @@ public class Snake {
 
     public void move(int a, int b) {
 
+
+        /* checkBorders(sections.get(0));
+            checkBody(sections.get(0)); */
+
+        //if (isAlive) {
+            /*SnakeSection head = null;
+            if (direction == SnakeDirection.UP) {
+                head = new SnakeSection(sections.get(0).getX(), sections.get(0).getY() - b);
+            }
+            if (direction == SnakeDirection.RIGHT) {
+                head = new SnakeSection(sections.get(0).getX() + a, sections.get(0).getY());
+            }
+            if (direction == SnakeDirection.DOWN) {
+                head = new SnakeSection(sections.get(0).getX(), sections.get(0).getY() + b);
+            }
+            if (direction == SnakeDirection.LEFT) {
+                head = new SnakeSection(sections.get(0).getX() - a, sections.get(0).getY());
+            }*/
+            SnakeSection head = new SnakeSection(sections.get(0).getX() + a, sections.get(0).getY() + b);
+
+            sections.add(0, head);
+            if (sections.get(0).getX() == Room.game.getMouse().getX() &&
+                    sections.get(0).getY() == Room.game.getMouse().getY()) {
+                Room.game.eatMouse();
+            } else {
+                sections.remove(sections.size() - 1);
+            }
+            checkBorders(sections.get(0));
+            checkBody(sections.get(0));
+        //}
     }
 }
