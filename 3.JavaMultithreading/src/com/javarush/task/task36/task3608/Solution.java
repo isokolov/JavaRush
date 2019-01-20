@@ -18,6 +18,7 @@ public class Solution {
         
         controller.setUsersView(usersView);
         controller.onShowAllUsers();
+        usersView.fireEventShowDeletedUsers();
 
     }
 }
