@@ -22,9 +22,9 @@ public class SnakeGame extends Game {
     }
 
     private void createGame() {
-       drawScene();
+       /*drawScene();
        Apple apple = new Apple(7,7);
-       apple.draw(this);
+       apple.draw(this);*/
     }
 
 
