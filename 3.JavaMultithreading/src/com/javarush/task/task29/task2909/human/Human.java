@@ -56,9 +56,13 @@ public class Human implements Alive {
         this.name = name;
     }
 
-    /*public int getCourse() {
-        return course;
-    }*/
+    public String getPosition() {
+        return "Человек";
+    }
+
+    public void printData() {
+        System.out.println(getPosition() + ": " + name);
+    }
 
     public void addChild (Human human) {
         children.add(human);
