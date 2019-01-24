@@ -64,6 +64,10 @@ public class User {
         return address.getCountry() + " " + address.getCity() + " " + address.getHouse();
     }
 
+    /*public Address getAddress() {
+        return new Address(address.getCountry() + " " + address.getCity() + " " + address.getHouse().house;
+    }*/
+
     public Work getWork() {
         return work;
     }
