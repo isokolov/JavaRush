@@ -26,6 +26,30 @@ public class Snake {
         this.direction = direction;
     }
 
+    public GameObject createNewHead() {
+        GameObject gameObject = null;
+        switch (direction) {
+            case RIGHT:
+                gameObject = new GameObject(snakeParts.get(0).x + 1, snakeParts.get(0).y);
+               break;
+            case LEFT:
+                gameObject = new GameObject(snakeParts.get(0).x - 1, snakeParts.get(0).y);
+                break;
+            case UP:
+                gameObject = new GameObject(snakeParts.get(0).x, snakeParts.get(0).y - 1);
+                break;
+            case DOWN:
+                gameObject = new GameObject(snakeParts.get(0).x, snakeParts.get(0).y + 1);
+                break;
+        }
+
+        return gameObject;
+    }
+
+    public void removeTail() {
+        snakeParts.remove(snakeParts.size() - 1);
+    }
+
     public void draw(Game game) {
         Color snakeColor = Color.BLUE;
         if (!isAlive) {
@@ -34,10 +58,8 @@ public class Snake {
         for(int i = 0; i < snakeParts.size(); i++) {
             if (i == 0) {
                 game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, snakeColor, 75);
-                //game.setCellValue(snakeParts.get(0).x, snakeParts.get(0).y, HEAD_SIGN);
             } else {
                 game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, snakeColor, 75);
-                //game.setCellValue(snakeParts.get(i).x, snakeParts.get(i).y, BODY_SIGN);
             }
 
 
