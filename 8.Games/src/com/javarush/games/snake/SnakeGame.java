@@ -15,11 +15,28 @@ public class SnakeGame extends Game {
        createGame();
     }
 
+    @Override
+    public void onKeyPress(Key key) {
+        switch (key) {
+            case UP:
+                snake.setDirection(Direction.UP);
+                break;
+            case DOWN:
+                snake.setDirection(Direction.DOWN);
+                break;
+            case LEFT:
+                snake.setDirection(Direction.LEFT);
+                break;
+            case RIGHT:
+                snake.setDirection(Direction.RIGHT);
+                break;
+        }
+    }
+
     private void drawScene() {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 setCellValueEx(i, j, Color.DARKSEAGREEN, "");
-                /* setCellColor(i, j, Color.DARKSEAGREEN); */
             }
         }
         snake.draw(this);
