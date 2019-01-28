@@ -58,15 +58,26 @@ public class Snake {
         for(int i = 0; i < snakeParts.size(); i++) {
             if (i == 0) {
                 game.setCellValueEx(snakeParts.get(0).x, snakeParts.get(0).y, Color.NONE, HEAD_SIGN, snakeColor, 75);
+                //game.setCellValue(snakeParts.get(0).x, snakeParts.get(0).y, HEAD_SIGN);
             } else {
                 game.setCellValueEx(snakeParts.get(i).x, snakeParts.get(i).y, Color.NONE, BODY_SIGN, snakeColor, 75);
+                //game.setCellValue(snakeParts.get(i).x, snakeParts.get(i).y, BODY_SIGN);
             }
 
 
         }
     }
 
-    public void move() {}
+    public void move() {
+        GameObject gameObject = createNewHead();
+        if (gameObject.x == SnakeGame.WIDTH || gameObject.x < 0 ||
+                gameObject.y == SnakeGame.HEIGHT || gameObject.y < 0) {
+            isAlive = false;
+            return;
+        }
+        snakeParts.add(0, gameObject);
+        removeTail();
+    }
 
 
 
