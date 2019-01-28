@@ -46,16 +46,26 @@ public class SnakeGame extends Game {
 
     private void createGame() {
        snake = new Snake(WIDTH / 2, HEIGHT / 2);
-       apple = new Apple(5, 5);
+       //apple = new Apple(5, 5);
        turnDelay = 300;
        setTurnTimer(turnDelay);
+       createNewApple();
        drawScene();
     }
 
     @Override
     public void onTurn(int step) {
        snake.move(apple);
+       if (apple.isAlive == false) {
+           createNewApple();
+       }
        drawScene();
+    }
+
+    private void createNewApple() {
+        int appleX = getRandomNumber(WIDTH);
+        int appleY = getRandomNumber(HEIGHT);
+        apple = new Apple(appleX, appleY);
     }
 
 
