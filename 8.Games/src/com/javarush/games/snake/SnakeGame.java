@@ -10,6 +10,7 @@ public class SnakeGame extends Game {
     private Apple apple;
     private int turnDelay;
     private boolean isGameStopped = false;
+    private static final int GOAL = 28;
 
    @Override
     public void initialize() {
@@ -35,6 +36,12 @@ public class SnakeGame extends Game {
         }
     }
 
+    private void win() {
+        stopTurnTimer();
+        isGameStopped = true;
+        showMessageDialog(Color.BLUEVIOLET, "YOU WIN", Color.ALICEBLUE, 30);
+    }
+
     private void gameOver() {
         stopTurnTimer();
         isGameStopped = true;
@@ -57,10 +64,8 @@ public class SnakeGame extends Game {
        turnDelay = 300;
        setTurnTimer(turnDelay);
        createNewApple();
-       //if (isGameStopped == false) {
-        isGameStopped = false;
-        drawScene();
-       //}
+       isGameStopped = false;
+       drawScene();
 
     }
 
@@ -72,6 +77,9 @@ public class SnakeGame extends Game {
        }
        if (snake.isAlive == false) {
            gameOver();
+       }
+       if (snake.getLength() > GOAL) {
+           win();
        }
        drawScene();
     }

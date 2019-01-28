@@ -22,6 +22,10 @@ public class Snake {
         snakeParts.add(object3);
     }
 
+    public int getLength() {
+        return snakeParts.size();
+    }
+
     public void setDirection(Direction direction) {
         if ( (this.direction == Direction.LEFT && direction != Direction.RIGHT)
         || (this.direction == Direction.RIGHT && direction != Direction.LEFT)
@@ -101,6 +105,5 @@ public class Snake {
         removeTail();
     }
 
-
-
+    
 }
