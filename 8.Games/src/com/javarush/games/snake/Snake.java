@@ -27,12 +27,19 @@ public class Snake {
     }
 
     public void setDirection(Direction direction) {
+        if ( (this.direction == Direction.LEFT && snakeParts.get(0).x == snakeParts.get(1).x)
+                || (this.direction == Direction.RIGHT && snakeParts.get(0).x == snakeParts.get(1).x)
+                || (this.direction == Direction.UP && snakeParts.get(0).y == snakeParts.get(1).y)
+                || (this.direction == Direction.DOWN && snakeParts.get(0).y == snakeParts.get(1).y)) {
+            return;
+        }
         if ( (this.direction == Direction.LEFT && direction != Direction.RIGHT)
         || (this.direction == Direction.RIGHT && direction != Direction.LEFT)
         || (this.direction == Direction.UP && direction != Direction.DOWN)
         || (this.direction == Direction.DOWN && direction != Direction.UP) ) {
             this.direction = direction;
         }
+
 
     }
 
