@@ -72,8 +72,21 @@ public class Snake {
         }
     }
 
+    public boolean checkCollision(GameObject gameObject) {
+        for (GameObject object: snakeParts) {
+            if (object.x == gameObject.x && object.y == gameObject.y) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void move(Apple apple) {
         GameObject gameObject = createNewHead();
+        if (checkCollision(gameObject)) {
+            isAlive = false;
+            return;
+        }
         if (gameObject.x == SnakeGame.WIDTH || gameObject.x < 0 ||
                 gameObject.y == SnakeGame.HEIGHT || gameObject.y < 0) {
             isAlive = false;
