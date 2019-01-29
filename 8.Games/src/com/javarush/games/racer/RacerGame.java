@@ -17,6 +17,15 @@ public class RacerGame extends Game {
         createGame();
     }
 
+    @Override
+    public void setCellColor(int x, int y, Color color) {
+        if (x >= WIDTH || x < 0 || y >= HEIGHT || y < 0) {
+            return;
+        } else {
+            super.setCellColor(x, y, color);
+        }
+    }
+
     private void drawField() {
         for (int i = 0; i < WIDTH ; i++) {
             for (int j = 0; j < HEIGHT; j++) {
