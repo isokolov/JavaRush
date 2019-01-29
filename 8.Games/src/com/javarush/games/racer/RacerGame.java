@@ -28,6 +28,13 @@ public class RacerGame extends Game {
         }
     }
 
+    @Override
+    public void onTurn(int step) {
+        moveAll();
+        drawScene();
+
+    }
+
     private void drawField() {
         for (int i = 0; i < WIDTH ; i++) {
             for (int j = 0; j < HEIGHT; j++) {
@@ -41,6 +48,10 @@ public class RacerGame extends Game {
             }
         }
     }
+
+    private void moveAll() {
+        roadMarking.move(player.speed);
+    }
     
     private void drawScene() {
         drawField();
@@ -51,6 +62,6 @@ public class RacerGame extends Game {
         roadMarking = new RoadMarking();
         player = new PlayerCar();
         drawScene();
-
+        setTurnTimer(40);
     }
 }
