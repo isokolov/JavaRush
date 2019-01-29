@@ -1,0 +1,163 @@
+only 4 tasks to solve in Lesson8 & Lesson9
+
+
+Lesson7 (Arrays, ArrayList) (all tasks solved)
+#### Arrays ####
+# task07.task0701; /* 48%, 1, 4.2,  51435 */
+# task07.task0702; /* 52%, 1, 3.73, 51117 */
+- task07.task0703; /* 32%, 1, 2.32, 50290 */
+- task07.task0704; /* 36%, 1, 3.01, 50048 */
+# task07.task0705; /* 37%, 1, 2.82, 49451 */ (Dividing array)
+# task07.task0706; /* 39%, 1, 2.1,  17727 */ (creating algorithm & knowledge)
+#### ArrayList ####
+# task07.task0707; /* 55%, 1, 3.59, 49818 */
+* task07.task0708; /* 26%, 3, 3.9,  47659 */ (didn't carefully READ. Almost like task0709;)
+- task07.task0709; /* 35%, 1, 2.68, 46874 */
+# task07.task0710; /* 35%, 1, 2.28, 47778 */ (add(0, obj))
+# task07.task0711; /* 45%, 1, 2.77, 47540 */ (remove(last) and add(0, str)
+# task07.task0712; /* 43%, 1, 2.16, 16087 */ (creating Algorithmus)
+# task07.task0713; /* 62%, 1, 4.81, 45734 */
+# task07.task0714; /* 42%, 1, 2.7,  46264 */
+- task07.task0715; /* 33%, 1, 2.17, 45967 */
+* task07.task0716; /* 40%, 2, 4.68, 42521 */ (Great chiddush & works properly with ListIterator)
+(Проверь свое решение с другим списком слов, например: "роза", "мера", "лоза", "лира", "вода", "упор".)
+* task07.task0717; /* 28%, 2, 3.25, 43579 */ (task not clear formulated, after reading comments easy)
+(Выведи получившийся список на экран, каждый элемент с новой строки. Метод doubleValues должен удваивать элементы
+списка по принципу альфа,бета,гамма -> альфа,альфа,бета,бета,гамма,гамма.)
+* task07.task0718; /* 19%, 4, 3.07, 15358 */ (LOGICAL ERROR. Needed to print index (i+1) and not i)
+(READ CAREFULLY) (Если список не упорядочен по возрастанию длины строки, то нужно
+вывести на экран индекс первого элемента, нарушающего такую упорядоченность.)
+- task07.task0719; /* 24%, 1, 1.48, 42230 */
+# task07.task0720; /* 39%, 1, 1.92, 40538 */ (must be clever with remove(0). See example)
+- task07.task0721; /* 32%, 1, 1.89, 40727 */
+- task07.task0722; /* 21%, 1, 1.46, 40653 */
+- task07.task0723; /* 14%, 1, 1.25, 40598 */
+- task07.task0724; /* 30%, 1, 1.69, 37989 */ (repeat constructor)
+- task07.task0725; /* 28%, 1, 1.45, 41851 */
+- task07.task0726; /* 46%, 1, 2.0,  35821 */
+- task07.task0727; /* 22%, 1, 1.44, 34513 */
+# task07.task0728; /* 40%, 1, 1.9,  35107 */ (need to write sort algorithmus. Did bubblesort)
+
+Lesson8 (Set, Map)
+- task08.task0801; /* 38%, 1, 2.69, 43854 */
+#### HashMap ####
+- task08.task0802; /* 51%, 1, 2.88, 43353 */
+- task08.task0803; /* 29%, 1, 2.38, 41849 */
+- task08.task0804; /* 18%, 1, 1.46, 42438 */
+- task08.task0805; /* 16%, 1, 1.38, 42252 */
+- task08.task0806; /* 25%, 1, 1.87, 42136 */
+#### LinkedList ####
+- task08.task0807; /* 34%, 1, 1.98, 42502 */
+# task08.task0808; /* 66%, 1, 3.79, 41410 */
+* task08.task0809; /* 8%,  2, 1.42, 40853 */ (stupid logical error. Need after - before and did before - after)
+- task08.task0810; /* 11%, 1, 1.19, 40410 */ (like task0809)
+- task08.task0811; /* 30%, 1, 1.8,  39837 */
+***** task08.task0812; /* 26%, 4, 3.68, 13864 */ (Great Chidushim! 2 times was wrong Algorithmus.
+#####To compare Integer > 127 must use intValue()! #######)
+(1)(Проверь работу программы с последовательностью: 1, 1, 1, 4, 4, 4, 4, 4, 4, 4. Ожидаемый вывод: 7)
+(2)(Проверь работу программы с последовательностью: 1, 1, 1, 2, 2, 2, 1, 1, 2, 2. Ожидаемый вывод: 3)
+(3)(Убедись, что программа работает правильно, если последовательность состоит из чисел, которые больше 127.)
+- task08.task0813; /* 61%, 1, 3.5,  40598 */
+# task08.task0814; /* 78%, 1, 5.6,  39334 */ (Must use Iterator. Knowledge.)
+* task08.task0815; /* 54%, 2, 5.3,  37119 */ (with return 1 theSame FamiliName not accepted)
+(Метод getCountTheSameLastName() должен возвращать число людей у которых совпадает фамилия.)
+# task08.task0816; /* 69%, 1, 5.39, 34837 */ (used Date, HashMap Iterator. Combined knowledge)
+###### task08.task0817; ###### The hardest task. Will do later.
+# task08.task0818; /* 45%, 1, 2.12, 13069 */ (HashMap with Iterator)
+# task08.task0819; /* 49%, 1, 2.24, 33367 */ (iterator.remove() only after iterator.next())
+# task08.task0820; /* 33%, 1, 1.79, 32102 */ (addAll, removeAll)
+- task08.task0821; /* 19%, 1, 1.33, 31527 */
+- task08.task0822; /* 25%, 1, 1.55, 32116 */ (Collections.sort(ArrayList))
+@ task08.task0823; /* 37%, 1, 1.91, 14438 */ (Not hard after Use of Regular Expressions)
+(Учитывай, что слова может разделять более чем один пробел.) (Need RegExp to remove spaces)
+* task08.task0824; /* 13%, 2, 1.65, 29161 */ (IN TASK SAID NOTHING ABOUT PRIVATE. WORKS also with private)
+(Убедись, что у полей класса Human нет модификаторов private и static.)
+- task08.task0825; /* 18%, 1, 1.31, 32242 */
+- task08.task0826; /* 30%, 1, 1.64, 30652 */ (used bubblesort form task0728)
+# task08.task0827; /* 56%, 1, 3.01, 27560 */ (USED Date & GregorianCalendar!!!####)
+* task08.task0828; /* 21%, 2, 1.99, 27079 */ (Mistake was Oktober, but right is October. FOrgot to correct)
+(Программа должна считывать с клавиатуры имя месяца и выводить его номер на экран по заданному шаблону.)
+# task08.task0829; /* 33%, 1, 1.71, 25834 */ (make an algorithm)
+- task08.task0830; /* 31%, 1, 1.61, 26477 */ (used bubblesort form task0728)
+
+Will do later task08.task0823(String); task08.task0817
+
+
+Lesson9 (Exceptions)
+#### StackTraceElement ####
+* task09.task0901; /* 14%, 2, 1.85, 34448 */ (because of System.out.println(element) validator didn#t accept)
+(Программа вывела в консоль (на экран) слишком много данных.)
+# task09.task0902; /* 58%, 1, 3.08, 33619 */ (Need understanding of StackTraceElement)
+- task09.task0903; /* 27%, 1, 1.84, 32355 */
+- task09.task0904; /* 18%, 1, 1.41, 32505 */
+# task09.task0905; /* 47%, 1, 2.27, 32220 */
+* task09.task0906; /* 19%, 2, 1.79, 12612 */(Must do everything with StackTraceElement,and not solution.getClass())
+(Выведенное сообщение должно содержать имя класса, метод которого вызвал метод log.
+Вывод должен соответствовать примеру из задания.)
+#### Exceptions ####
+# task09.task0907; /* 52%, 1, 2.13, 33111 */
+- task09.task0908; /* 14%, 1, 1.26, 32622 */
+- task09.task0909; /* 17% 1, 1.31,  32543 */
+- task09.task0910; /* 15%, 1, 1.27, 32460 */
+- task09.task0911; /* 11%, 1, 1.19, 32312 */
+- task09.task0912; /* 18%, 1, 1.28, 13001 */
+- task09.task0913; /* 23%, 1, 1.57, 32239 */
+- task09.task0914; /* 12%, 1, 1.29, 32061 */ (first Exception3, ...)
+* task09.task0915; /* 35%, 2, 3.43, 30213 */ (Must understand topic. Didn't read one detail. ATTENTION!)
+(Метод main должен логировать исключения, которые кидает метод handleExceptions.)
+- task09.task0916; /* 47%, 1, 2.61, 30999 */
+- task09.task0917; /* 27%, 1, 1.66, 30367 */ (StackTraceElement)
+- task09.task0918; /* 28%, 1, 1.53, 11934 */
+- task09.task0919; /* 27%, 1, 1.59, 29124 */
+#### Bonus ####
+- task09.task0920; /* 6%,  1, 1.12, 28997 */
+- task09.task0921; /* 33%, 1, 1.79, 28383 */ (NumberFormatException)
+##### task09.task0922; first learn & train Date, DateFormat, SimpleDateFormat
+- task09.task0923; /* 23%, 1, 1.48, 26682 */
+- task09.task0924; /* 40%, 1, 1.82, 26491 */ (red hat)
+- task09.task0925; /* 32%, 1, 1.89, 28067 */
+* task09.task0926; /* 5%,  2, 1.26, 26918 */ (SHAME,did first4, then2, but needed first2, then4. At-tion!)
+# task09.task0927; /* 21%, 1, 1.44, 26424 */ (chidush: HashSet constructor with map.values())
+* task09.task0928; /* 57%, 2, 3.54, 23744 */ (SHAME. ATTENTION TEST WITH ;)
+* task09.task0929; /* 7%,  7, 3.12, 22144 */ (TASK NOT CLEAR.) (works only with
+destinationFileName = reader.readLine(); after catch())
+1)(Проверь, что программа считывает данные с клавиатуры не больше 2-х раз )
+2)(Если метод getInputStream не кидал исключений, то не нужно выводить сообщение «Файл не существует.»)
+  (Метод main должен обрабатывать исключения кидаемые методом getInputStream.)
+  (Проверь, что программа успешно копирует содержимое.)
+?) (Программа должна копировать содержимое первого файла во второй. Проверь, что
+программа успешно копирует содержимое, если первый раз было введено имя несуществующего файла.)
+Will do later task0922(SimpleDateFormat, DateFormat, String)
+# task09.task0930; /* 44%, 1, 2.07, 20499 */ (Algorithm & checking)
+
+Will do later task09.task0922
+
+Lesson10 (type casting) (all tasks solved)
+* task10.task1001; /* 18%, 2, 2.11, 30235 */ (Just changing short to int in long d.
+Thought long. Should do more simple efforts and no tricks like long d = (short) (a + (int)(f / c) + b);
+(Инициализацию переменной 'd' менять нельзя, но можно добавлять оператор приведения типа.)
+- task10.task1002; /* 31%, 1, 2.2,  29821 */
+- task10.task1003; /* 35%, 1, 1.81, 29779 */
+# task10.task1003; /* 41%, 1, 2.93, 29069 */ (Need to use ASCII Table)
+- task10.task1005; /* 20%, 1, 1.56, 29449 */
+# task10.task1006; /* 13%, 1, 1.23, 11457 */
+# task10.task1007; /* 12%, 1, 1.22, 10975 */
+- task10.task1008; /* 21%, 1, 1.37, 27345 */
+- task10.task1009; /* 31%, 1, 1.57, 27147 */
+- task10.task1010; /* 27%, 1, 1.57, 26921 */
+# task10.task1011; /* 33%, 1, 1.62, 26395 */ (Need to know substring(i))
+* task10.task1012; /* 16%, 2, 1.7, 23952 */ (STRANGE SO MANY SOLVED. DIFFICULT. READ TIPS)
+(TRIED TreeMap 'ё' was at the end. With LinkedHashMap was OK. Need to learn more about Collections)
+(Проверь, что в выводе буква 'ё' находится на своем месте - после буквы 'е')
+(Учти, что вводимые с клавиатуры строки могут содержать не только буквы, но и другие символы.)
+- task10.task1013; /* 25%, 1, 1.44, 24610 */
+- task10.task1014; /*  6%, 1, 1.1,  25920 */
+# task10.task1015; /* 28%, 1, 1.53, 24318 */ (See chidushim! Arrays.asList(), ...)
+# task10.task1016; /* 32%, 1, 1.78, 23141 */ (deeper into HashMap)
+- task10.task1017; /* 14%, 1, 1.25, 23720 */
+* task10.task1018; /* 28%, 2, 2.18, 22404 */ (NEEDED TO STUDY ALL CODE CAREFULLY)
+(DIDN'T CONSIDERED that constructor also creates a pair for HashMap)
+* task10.task1019; /* 16%, 4, 2.75, 21101 */ (Was needed if int "" break, if int and string "" map.put(string, int)
+(Ты перепутал порядок вывода.) (Если после числа была введена пустая строка, это число также
+должно быть выведено на экран (не должно потеряться).) (TASK NOT EASY TO UNDERSTAND. NEEDED TIPS.)
+# task10.task1020; /* 24%, 1, 1.47, 21912 */ (Used Arrays.sort(array[])

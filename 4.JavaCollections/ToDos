@@ -1,0 +1,29 @@
+Games
+
+Syntax Quest
+task08.task0817 (HashMap complex)
+task09.task0922 (Date, DateFormat, SimpleDateFormat)
+
+Core Quest
+Lesson15
+task15.task1522; (SingleTon lazy initialization)
+task15.task1523; (1 failed, constructor tricks)
+#task15.task1525; (success, need to learn relative path)
+task15.task1527; (String, RegExp)
+
+Lesson16
+task16.task1623; // can start
+task16.task1629; started
+task16.task1630;
+task16.task1632;
+task16.task1633; UncaughtExceptionHandler
+
+#### SingleTon 1421, 1522, 1706, 1707 ####
+Lesson17
+task17.task1710; CRUD for later
+task17.task1711; CRUD2 for later
+
+Lesson18
+task18.task1814; // can try
+task18.task1816; // can start
+...

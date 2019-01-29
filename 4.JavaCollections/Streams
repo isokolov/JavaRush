@@ -1,0 +1,77 @@
+Lesson18 (InputStream, OutputStream, Wrapper(Decorator))
+(###Need good understanding of topic. Many people failed###)
+#### FileInputStream(Output) ####
+- task18.task1801; /* 42%, 1, 2.11, 13742 */
+- task18.task1802; /* 35%, 1, 1.79, 13662 */ (like task1801)
+* task18.task1803; /* 39%, 2, 3.18, 12824 */ (used TreeMap, didn't READ CAREFULLY SEE DOWN)
+(Данные в консоль должны выводится в одну строку.)
+# task18.task1804; /* 33%, 1, 1.96, 12475 */ (almost like task1803)
+# task18.task1805; /* 43%, 1, 2.19, 12777 */ (TreeSet)
+#### continue previous but with byte[] buffer ####
+# task18.task1806; /* 64%, 1, 3.47, 13198 */ (wanted to do while, but from forum got that use if)
+# task18.task1807; /* 39%, 1, 1.93, 13048 */ (chidush text coded in bytes with ascii-code)
+* task18.task1808; /* 37%, 3, 3.74, 12550 */ (TRIED IT ON EXAMPLE. NEED TO CONSIDER ALL CASES)
+(Вторую половину байт из первого файла нужно записать в третий файл.)
+@ task18.task1809; /* 425, 1, 2.09, 12830 */ (See Algorithm! USE SECHEL!!!)
+# task18.task1810; /* 40%, 1, 2.19, 12628 */
+#### Wrapper, Decorator ####
+# task18.task1811; /* 34%, 1, 1.76, 12819 */ (Good Lomdus for wrapping, see main())
+# task18.task1812; /* 72%, 1, 3.57, 12449 */ (Similar to task1813))
+# task18.task1813; /* 67%, 1, 3.33, 12033 */ (Just need to understand the topic. Many failed)
+task18.task1814; ##### to start #### (need better String)
+# task18.task1815; /* 64%, 1, 2.66, 11899 */ (chidush implamenting class Wrapper for Interface)
+# task18.task1818; /* 40%, 1, 2.02, 11662 */
+* task18.task1824; /* 26%, 3, 2.98, 10291 */ (no //fileInputStream.close(); in catch => NullPointerException)
+(Если файл не существует, программа должна перехватывать исключение FileNotFoundException.)
+#### Bonus (complex) #### (need String, ...)
+
+
+
+Lesson19 (Reader, Writer, Adapter)
+#### Adapter Intro ####
+# task19.task1901; /* 59%, 1, 2.29, 11771 */ (easy after understanding Adapter topic)
+- task19.task1902; /* 46%, 1, 2.03, 11585 */
+* task19.task1903; (#### about to start #### need first String)
+* task19.task1904; /* 46%, 2, 2.36, 10638 */ (Need better knowledge Calendar)
+(Didn't read carefully. In files first lastName, but in constructor firstName)
+(Part6)Убедись, что метод read() корректно считывает Фамилию,
+Имя и Отчество с файла и устанавливает их значения в объект типа Person.)
+* task19.task1905; (#### about to start #### need first String)
+#### FileReader, FileWriter ####
+# task19.task1906; /* 57%, 1, 2.56, 11044 */ (chidush in for loop)
+* task19.task1907; (2 attempts failed tried simple with chars. #### First learn String ####)
+(Программа должна выводить в консоль количество слов "world", которые встречаются в файле.)
+(Проверь, почему программа находит больше слов "world" чем есть в файле.)
+* task19.task1909; /* 14%, 2, 1.65, 10495 */ (FORGOT reader.close())(Nice chidushim.
+Text parsing with BufferedReader(new FileReader()))
+
+#### Reader-Wrapper see examples/lecture)
+
+#### Bonus #### (Need Streams, String knowledge)
+* task19.task1917; /* 49%, 3, 5.02, 7514 */ (mistake was to make extends FileWriter. Needed Wrapper without extends!!!)
+(2 fails???. 2 attempt did fileWriter = new FileWriter...) (Looked advensky to understand. Could do by myself)
+
+@ task19.task1928; /* 67%, 1, 3.1, 8884 */ (Was thinking about another problem, looked forum. Understand the topic.)
+
+Lesson20 (Serialization)
+#### practically not relevant part ####
+
+#### Serialization ####
+- task20.task2006; /* 36%, 1, 1.81, 9345 */ (easy)
+- task20.task2007; /* 11%, 1, 1.21, 9282 */ (easy must implements in 2 classes)
+- task20.task2009; /* 12%, 1, 1.24, 9186 */ (easy)
+- task20.task2010; /* 35%, 1, 1.48, 9188 */ (easy)
+#### Externalizable ####
+# task20.task2011; /* 41%, 1, 1.88, 9036 */
+- task20.task2012; /* 50%, 1, 3.31, 8901 */ (easy)
+* task20.task2013; /* 50%, 3, 4.62, 8594 */ (ATTENTION. ONLY readObject() & writeObject() & the same order. See comments.)
+(Методы readExternal и writeExternal должны позволять корректно сериализовывать и десериализовывать объекты типа Person.)
+(Сервер не может корректно протестировать присланное решение.)
+- task20.task2014; /* 53%, 1, 3.3, 8442 */
+#### Bonus ####
+- task20.task2016; /* 32%, 1, 1.64, 8547 */ (easy)
+@ task20.task2018; /* 81%, 1, 5.6,  7736 */ (used forum tips, need extra knowledge. Not practical)
+- task20.task2019; /* 23%, 1, 1.38, 8086 */
+# task20.task2020; /* 59%, 1, 3.29, 7965 */ (easy adding transient & implements)
+- task20.task2023; /* 46%, 1, 1.84, 7607 */ (IntelliJ angry)
+# task20.task2024; /* 8%,  1, 1.15, 6930 */ (#### Link to study about Graph ####)
