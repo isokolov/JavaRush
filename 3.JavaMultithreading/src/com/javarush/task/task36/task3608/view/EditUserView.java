@@ -20,12 +20,19 @@ public class EditUserView implements View {
     }
 
     public void fireEventShowAllUsers() {
-        //controller.setUsersView(this);
-        //controller.onShowAllUsers();
+
     }
 
     public void fireEventShowDeletedUsers() {
-        //controller.onShowAllDeletedUsers();
+
     }
+
+    public void fireEventUserDeleted(long id) {
+        controller.onUserDelete(id);
+    }
+
+    /*public void fireEventOpenUserEditForm(long id) {
+        controller.onOpenUserEditForm(id);
+    }*/
 
 }
