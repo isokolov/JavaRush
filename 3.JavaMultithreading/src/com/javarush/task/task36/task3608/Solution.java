@@ -9,7 +9,7 @@ import com.javarush.task.task36.task3608.view.UsersView;
 
 public class Solution {
     public static void main(String[] args) {
-        /*Model model = new FakeModel();*/
+
         Model model = new MainModel();
         UsersView usersView = new UsersView();
         EditUserView editUserView = new EditUserView();
@@ -18,13 +18,14 @@ public class Solution {
         editUserView.setController(controller);
         controller.setModel(model);
         controller.setUsersView(usersView);
-        //controller.onShowAllUsers(); /* #### */
+        //controller.onShowAllUsers();
         controller.setEditUserView(editUserView);
 
 
         usersView.fireEventShowAllUsers();
         usersView.fireEventOpenUserEditForm(126L);
         editUserView.fireEventUserDeleted(124L);
+        editUserView.fireEventUserChanged("Petrov", 125, 5);
         usersView.fireEventShowDeletedUsers();
 
 

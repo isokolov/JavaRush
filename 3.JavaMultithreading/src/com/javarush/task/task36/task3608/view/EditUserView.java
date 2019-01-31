@@ -31,8 +31,8 @@ public class EditUserView implements View {
         controller.onUserDelete(id);
     }
 
-    /*public void fireEventOpenUserEditForm(long id) {
-        controller.onOpenUserEditForm(id);
-    }*/
+    public void fireEventUserChanged(String name, long id, int level) {
+        controller.onUserChange(name, id, level);
+    }
 
 }

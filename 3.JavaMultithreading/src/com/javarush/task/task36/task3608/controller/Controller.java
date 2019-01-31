@@ -41,8 +41,11 @@ public class Controller {
     public void onUserDelete(long id) {
         model.deleteUserById(id);
         onShowAllUsers(); /* #### */
-        /*usersView.refresh(model.getModelData());
-        editUserView.refresh(model.getModelData());*/
+    }
+
+    public void onUserChange(String name, long id, int level) {
+        model.changeUserData(name, id, level);
+        usersView.refresh(model.getModelData());
     }
 
 
