@@ -47,6 +47,22 @@ public class RacerGame extends Game {
         }
     }
 
+    @Override
+    public void onKeyReleased(Key key) {
+        switch (key) {
+            case RIGHT:
+                if (player.getDirection() == Direction.RIGHT) {
+                    player.setDirection(Direction.NONE);
+                }
+            break;
+            case LEFT:
+                if (player.getDirection() == Direction.LEFT) {
+                    player.setDirection(Direction.NONE);
+                }
+            break;
+        }
+    }
+
     private void drawField() {
         for (int i = 0; i < WIDTH ; i++) {
             for (int j = 0; j < HEIGHT; j++) {
