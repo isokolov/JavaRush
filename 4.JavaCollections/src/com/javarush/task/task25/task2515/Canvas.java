@@ -24,6 +24,14 @@ public class Canvas {
         return matrix;
     }
 
+    public void clear() {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[0].length; j++) {
+                setPoint(j, i, ' ');
+            }
+        }
+    }
+
     public void setPoint(double x, double y, char c) {
         if (x < 0 || y < 0 || matrix.length <= y || matrix[0].length <= x) return;
         int xNew = (int)Math.round(x);
@@ -45,13 +53,16 @@ public class Canvas {
         }
     }
 
-    /*public void drawMatrix(double x, double y, int[][] matrix, char c) {
+    public void print() {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                if (matrix[i][j] == 0) {
-                    setPoint(x+j, y+i, c);
-                }
+                System.out.println(matrix[i][j]);
             }
+
         }
-    }*/
+        System.out.println("");
+        System.out.println("");
+    }
+
+
 }
