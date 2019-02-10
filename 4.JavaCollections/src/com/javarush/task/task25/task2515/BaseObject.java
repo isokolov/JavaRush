@@ -41,4 +41,21 @@ public abstract class BaseObject {
     public boolean isAlive() {
         return isAlive;
     }
+
+    public boolean isIntersect(BaseObject o) {
+        double distance = Math.sqrt(Math.pow(this.getX() - o.getX(), 2) + Math.pow(this.getY() - o.getY(), 2));
+        if (distance < Math.max(this.getRadius(), o.getRadius())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void draw() {}
+
+    public void move() {}
+
+    public void die() {
+        isAlive = false;
+    }
 }
