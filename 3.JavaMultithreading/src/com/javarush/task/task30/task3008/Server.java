@@ -5,8 +5,23 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
+
+    private static Map<String, Connection> connectionMap = new ConcurrentHashMap<>();
+
+    public static void sendBroadcastMessage(Message message) {
+        try {
+            for(Map.Entry<String, Connection> entry: connectionMap.entrySet()) {
+                entry.getValue().send(message);
+            }
+        } catch (IOException exc) {
+            ConsoleHelper.writeMessage("Couldn't send the message.");
+        }
+    }
 
     private static class Handler extends Thread {
         private Socket socket;
