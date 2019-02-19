@@ -12,8 +12,6 @@ public class Rocket extends GameObject {
     }
 
     private void checkBorders() {
-
-
         if (x < 0) {
             x = 0;
             speedX = 0;
@@ -25,7 +23,13 @@ public class Rocket extends GameObject {
             y = 0;
             speedY = 0;
         }
+    }
 
+    public boolean isStopped() {
+        if (speedY < 10 * boost) {
+            return true;
+        }
+        else return false;
     }
 
     public void move(boolean isUpPressed, boolean isLeftPressed, boolean isRightPressed) {
@@ -54,8 +58,6 @@ public class Rocket extends GameObject {
             speedX += slowdown;
             x += speedX;
         }
-
         checkBorders();
-
     }
 }
