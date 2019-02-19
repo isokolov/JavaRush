@@ -41,6 +41,10 @@ public class Rocket extends GameObject {
         y--;
     }
 
+    public void crash() {
+        matrix = ShapeMatrix.ROCKET_CRASH;
+    }
+
     private void checkBorders() {
         if (x < 0) {
             x = 0;
