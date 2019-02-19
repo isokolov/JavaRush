@@ -37,6 +37,10 @@ public class Rocket extends GameObject {
         checkBorders();
     }
 
+    public void land(){
+        y--;
+    }
+
     private void checkBorders() {
         if (x < 0) {
             x = 0;
