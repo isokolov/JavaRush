@@ -8,6 +8,8 @@ public class Solution {
 
         Thread threadA = new Thread(commonThread, "Нить 1");
         Thread threadB = new Thread(commonThread, "Нить 2");
+        threadA.setUncaughtExceptionHandler(handler);
+        threadB.setUncaughtExceptionHandler(handler);
 
         threadA.start();
         threadB.start();
@@ -18,7 +20,7 @@ public class Solution {
 
     public static class TestedThread extends Thread {
         public TestedThread(Thread.UncaughtExceptionHandler handler) {
-            setUncaughtExceptionHandler(handler);
+            //setUncaughtExceptionHandler(handler);
             start();
         }
 
@@ -38,3 +40,4 @@ public class Solution {
         }
     }
 }
+/* 19%, 1, 1.31, 12047 */
