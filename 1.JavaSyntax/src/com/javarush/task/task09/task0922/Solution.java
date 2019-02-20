@@ -21,10 +21,11 @@ public class Solution {
         /* started */
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String inputDate = reader.readLine();
-        Date date = new Date(Integer.parseInt(inputDate.substring(0,4)),
-                Integer.parseInt(inputDate.substring(5,7)), Integer.parseInt(inputDate.substring(9,10)));
-        DateFormat df = new SimpleDateFormat("MM dd, yyyy", Locale.ENGLISH);
-        System.out.println(df.format(date));
+        SimpleDateFormat df = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+        Date date = new Date(Integer.parseInt(inputDate.substring(0,4)) - 1900,
+                Integer.parseInt(inputDate.substring(5,7)) - 1, Integer.parseInt(inputDate.substring(8,10)));
+
+        System.out.println(df.format(date).toUpperCase());
     }
 
 }
