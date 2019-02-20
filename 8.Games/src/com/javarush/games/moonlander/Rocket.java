@@ -31,6 +31,12 @@ public class Rocket extends GameObject {
         rightFire = new RocketFire(frameList3);
     }
 
+    @Override
+    public void draw(Game game) {
+        super.draw(game);
+        downFire.draw(game);
+    }
+
     public void move(boolean isUpPressed, boolean isLeftPressed, boolean isRightPressed) {
         if (isUpPressed) {
             speedY -= boost;
@@ -54,6 +60,7 @@ public class Rocket extends GameObject {
         }
         x += speedX;
         checkBorders();
+        switchFire(isUpPressed);
     }
 
     public void land(){
@@ -75,6 +82,17 @@ public class Rocket extends GameObject {
         if (y <= 0) {
             y = 0;
             speedY = 0;
+        }
+    }
+
+    private void switchFire(boolean isUpPressed) {
+        if (isUpPressed) {
+            downFire.x = x + (width / 2);
+            downFire.y = y + height;
+            downFire.show();
+        }
+        if (!isUpPressed) {
+            downFire.hide();
         }
     }
 
