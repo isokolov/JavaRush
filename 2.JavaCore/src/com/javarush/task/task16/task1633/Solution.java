@@ -40,4 +40,3 @@ public class Solution {
         }
     }
 }
-/* 19%, 1, 1.31, 12047 */
