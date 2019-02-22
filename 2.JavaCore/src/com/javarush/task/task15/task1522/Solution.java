@@ -16,8 +16,32 @@ public class Solution {
     public static Planet thePlanet;
 
     //add static block here - добавьте статический блок тут
+    static {
+        try {
+            readKeyFromConsoleAndInitPlanet();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public static void readKeyFromConsoleAndInitPlanet() {
+    public static void readKeyFromConsoleAndInitPlanet() throws IOException {
         // implement step #5 here - реализуйте задание №5 тут
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String planetName = reader.readLine();
+        if(planetName.equals(Planet.EARTH)) {
+            thePlanet = Earth.getInstance();
+            return;
+        }
+        else if(planetName.equals(Planet.MOON)) {
+            thePlanet = Moon.getInstance();
+            return;
+        }
+        else if(planetName.equals(Planet.SUN)) {
+            thePlanet = Sun.getInstance();
+            return;
+        } else {
+            thePlanet = null;
+        }
     }
 }
