@@ -17,24 +17,8 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        //SubSolution solution = new SubSolution();
     }
 
-    public class SubSolution extends Solution {
-
-        /*public SubSolution() {}
-
-        SubSolution(int number) {
-            super(number);
-        }
-
-        protected SubSolution(String string) {
-            super(string);
-        }*/
-
-        /*public SubSolution(double d) {
-            super(d);
-        }*/
-    }
 }
+
 
