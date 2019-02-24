@@ -1,11 +1,17 @@
 package com.javarush.games.spaceinvaders;
 
 import com.javarush.engine.cell.*;
+import com.javarush.games.spaceinvaders.gameobjects.Star;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpaceInvadersGame extends Game {
 
     public final static int WIDTH = 64;
     public final static int HEIGHT = 64;
+    private List<Star> stars;
+
 
     @Override
     public void initialize() {
@@ -19,6 +25,10 @@ public class SpaceInvadersGame extends Game {
                 setCellValueEx(i, j, Color.BLACK, "");
             }
         }
+
+        for(Star star: stars) {
+            star.draw(this);
+        }
     }
 
     private void drawScene() {
@@ -26,7 +36,20 @@ public class SpaceInvadersGame extends Game {
     }
 
     private void createGame() {
+        createStars();
         drawScene();
+    }
+
+    private void createStars() {
+        stars = new ArrayList<Star>();
+        stars.add(new Star(1,1));
+        stars.add(new Star(1,2));
+        stars.add(new Star(1,5));
+        stars.add(new Star(1,6));
+        stars.add(new Star(3,1));
+        stars.add(new Star(3,7));
+        stars.add(new Star(4,4));
+        stars.add(new Star(4,5));
     }
 
 
