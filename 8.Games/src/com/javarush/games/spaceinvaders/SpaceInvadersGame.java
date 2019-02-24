@@ -13,7 +13,13 @@ public class SpaceInvadersGame extends Game {
         createGame();
     }
 
-    private void drawField() {}
+    private void drawField() {
+        for (int i = 0; i < WIDTH; i++) {
+            for (int j = 0; j < HEIGHT; j++) {
+                setCellValueEx(i, j, Color.BLACK, "");
+            }
+        }
+    }
 
     private void drawScene() {
         drawField();
