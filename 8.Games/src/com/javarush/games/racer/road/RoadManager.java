@@ -26,12 +26,20 @@ public class RoadManager {
         }
     }
 
+    private void generateRegularCar(Game game) {
+        int random100 = game.getRandomNumber(100);
+        int carTypeNumber = game.getRandomNumber(4);
+        if (random100 < 30) {
+            addRoadObject(RoadObjectType.values()[carTypeNumber], game);
+        }
+    }
+
     private RoadObject createRoadObject(RoadObjectType type, int x, int y) {
         if (type == RoadObjectType.THORN) {
             return new Thorn(x, y);
         }
         else {
-            return null;
+            return new Car(RoadObjectType.CAR, x, y);
         }
     }
 
@@ -63,6 +71,7 @@ public class RoadManager {
 
     public void generateNewRoadObjects(Game game) {
         generateThorn(game);
+        generateRegularCar(game);
     }
 
     public void draw(Game game) {
