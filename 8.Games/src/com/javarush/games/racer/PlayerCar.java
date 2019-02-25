@@ -20,6 +20,10 @@ public class PlayerCar extends GameObject {
         this.direction = direction;
     }
 
+    public void stop() {
+        matrix = ShapeMatrix.PLAYER_DEAD;
+    }
+
     public void move() {
         if (x < RoadManager.LEFT_BORDER) {
             x = RoadManager.LEFT_BORDER;
