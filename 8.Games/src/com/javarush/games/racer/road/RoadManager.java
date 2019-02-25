@@ -16,6 +16,7 @@ public class RoadManager {
     private static final int FIRST_LANE_POSITION = 16;
     private static final int FOURTH_LANE_POSITION = 44;
     private List<RoadObject> items = new ArrayList<>();
+    private static final int PLAYER_CAR_DISTANCE = 12;
 
     private void deletePassedItems() {
         Iterator<RoadObject> iterator = items.iterator();
@@ -24,6 +25,14 @@ public class RoadManager {
                 iterator.remove();
             }
         }
+    }
+
+    private boolean isRoadSpaceFree(RoadObject object) {
+        for (RoadObject roadObject: items) {
+            if (roadObject.isCollisionWithDistance(object, PLAYER_CAR_DISTANCE))
+                return false;
+        }
+        return true;
     }
 
     private void generateRegularCar(Game game) {
@@ -48,7 +57,10 @@ public class RoadManager {
         int x = game.getRandomNumber(FIRST_LANE_POSITION, FOURTH_LANE_POSITION);
         int y = -1 * RoadObject.getHeight(type);
         RoadObject roadObject = createRoadObject(type, x, y);
-        if (roadObject != null) {
+        /*if (roadObject != null) {
+            items.add(roadObject);
+        }*/
+        if (isRoadSpaceFree(roadObject)) {
             items.add(roadObject);
         }
     }
