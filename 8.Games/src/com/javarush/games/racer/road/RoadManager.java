@@ -1,9 +1,11 @@
 package com.javarush.games.racer.road;
 
 import com.javarush.engine.cell.Game;
+import com.javarush.games.racer.GameObject;
 import com.javarush.games.racer.RacerGame;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class RoadManager {
@@ -13,6 +15,15 @@ public class RoadManager {
     private static final int FIRST_LANE_POSITION = 16;
     private static final int FOURTH_LANE_POSITION = 44;
     private List<RoadObject> items = new ArrayList<>();
+
+    private void deletePassedItems() {
+        Iterator<RoadObject> iterator = items.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().y >= RacerGame.HEIGHT) {
+                iterator.remove();
+            }
+        }
+    }
 
     private RoadObject createRoadObject(RoadObjectType type, int x, int y) {
         if (type == RoadObjectType.THORN) {
@@ -63,5 +74,6 @@ public class RoadManager {
         for (RoadObject roadObject: items) {
             roadObject.move(boost + roadObject.speed);
         }
+        deletePassedItems();
     }
 }

@@ -3,6 +3,7 @@ package com.javarush.games.racer;
 import com.javarush.engine.cell.Game;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class RoadMarking {
@@ -31,4 +32,6 @@ public class RoadMarking {
             item.draw(game);
         }
     }
+
+
 }
