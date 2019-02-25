@@ -23,6 +23,7 @@ public class SpaceInvadersGame extends Game {
 
     @Override
     public void onTurn(int step) {
+        //super.onTurn(step);
         drawScene();
     }
 

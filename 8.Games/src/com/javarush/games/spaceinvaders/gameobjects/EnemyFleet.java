@@ -23,6 +23,27 @@ public class EnemyFleet {
         }
     }
 
+    private double getLeftBorder() {
+        double minX = Integer.MAX_VALUE;
+        for (EnemyShip enemyShip: ships) {
+            if (enemyShip.x < minX) {
+                minX = enemyShip.x;
+            }
+        }
+
+        return minX;
+    }
+
+    private double getRightBorder() {
+        double maxX = Integer.MIN_VALUE;
+        for (EnemyShip enemyShip: ships) {
+            if ((enemyShip.x + enemyShip.width) > maxX) {
+                maxX = enemyShip.x + enemyShip.width;
+            }
+        }
+
+        return maxX;
+    }
 
     private void createShips() {
 
