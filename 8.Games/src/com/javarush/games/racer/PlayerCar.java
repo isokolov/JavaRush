@@ -20,6 +20,10 @@ public class PlayerCar extends GameObject {
         this.direction = direction;
     }
 
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
     public void stop() {
         matrix = ShapeMatrix.PLAYER_DEAD;
     }
