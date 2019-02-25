@@ -26,6 +26,14 @@ public class EnemyFleet {
         }
     }
 
+    public Bullet fire(Game game) {
+        if (ships.size() == 0) return null;
+        int result = game.getRandomNumber(100 / SpaceInvadersGame.COMPLEXITY);
+        if (result > 0) return null;
+        int index = game.getRandomNumber(ships.size());
+        return ships.get(index).fire();
+    }
+
     public void move() {
         if (ships.size() == 0) return;
         double speed = getSpeed();
