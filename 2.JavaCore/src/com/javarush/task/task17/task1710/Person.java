@@ -6,20 +6,30 @@ public class Person {
     private String name;
     private Sex sex;
     private Date birthDate;
+    //private int id;
+    //private static int countId = 0;
 
     private Person(String name, Sex sex, Date birthDate) {
         this.name = name;
         this.sex = sex;
         this.birthDate = birthDate;
+        //this.id = countId;
+        //System.out.println("сегодня родился    id=" + id);
     }
 
     public static Person createMale(String name, Date birthDate) {
+        //countId++;
         return new Person(name, Sex.MALE, birthDate);
     }
 
     public static Person createFemale(String name, Date birthDate) {
+        //countId++;
         return new Person(name, Sex.FEMALE, birthDate);
     }
+
+    /*public int getId() {
+        return id;
+    }*/
 
     public String getName() {
         return name;
