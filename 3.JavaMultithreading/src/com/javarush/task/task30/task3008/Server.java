@@ -57,6 +57,22 @@ public class Server {
 
             return userName;
         }
+
+        private void serverMainLoop(Connection connection, String userName) throws IOException, ClassNotFoundException {
+            Message message;
+            String result = "";
+            while (true) {
+                message = connection.receive();
+                result = message.getData();
+                if(message.getType() == MessageType.TEXT) {
+                    result = userName + ": " + result;
+                    sendBroadcastMessage(new Message(MessageType.TEXT, result));
+                }
+                if(message.getType() != MessageType.TEXT) {
+                    ConsoleHelper.writeMessage("Wrong message type");
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
