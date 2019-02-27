@@ -30,6 +30,17 @@ public class Server {
             this.socket = socket;
         }
 
+        private void notifyUsers(Connection connection, String userName) throws IOException {
+            if (connectionMap.containsKey(userName)) {
+                return;
+            }
+            for (Map.Entry<String, Connection> entry: connectionMap.entrySet()) {
+                String userToInform = entry.getKey();
+                connection.send(new Message(MessageType.USER_ADDED, userToInform));
+
+            }
+        }
+
         private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {
 
             Message response;
@@ -41,24 +52,8 @@ public class Server {
                 userName = response.getData();
             } while (response.getType() != MessageType.USER_NAME || userName.isEmpty() || connectionMap.containsKey(userName));
 
-            /*while(true) {
-                connection.send(new Message(MessageType.NAME_REQUEST));
-                if (connection.receive().getType().equals(MessageType.USER_NAME) /*&&
-                        !connection.receive().getData().isEmpty() &&
-                        !connectionMap.containsKey(connection.receive().getData())*//*) {
-
-                    userName = connection.receive().getData();
-                    if(userName != null && !userName.isEmpty() && !connectionMap.keySet().contains(userName)) {
-                        connectionMap.put(userName, connection);
-                        break;
-                    }
-
-                }
-            }*/
             connectionMap.put(userName, connection);
             connection.send(new Message(MessageType.NAME_ACCEPTED));
-            //ConsoleHelper.writeMessage("Name " + data + " was accessfully added to connectionMap");
-
 
             return userName;
         }
