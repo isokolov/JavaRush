@@ -29,6 +29,39 @@ public class Server {
         public Handler(Socket socket) {
             this.socket = socket;
         }
+
+        private String serverHandshake(Connection connection) throws IOException, ClassNotFoundException {
+
+            Message response;
+            String userName;
+
+            do {
+                connection.send(new Message(MessageType.NAME_REQUEST));
+                response = connection.receive();
+                userName = response.getData();
+            } while (response.getType() != MessageType.USER_NAME || userName.isEmpty() || connectionMap.containsKey(userName));
+
+            /*while(true) {
+                connection.send(new Message(MessageType.NAME_REQUEST));
+                if (connection.receive().getType().equals(MessageType.USER_NAME) /*&&
+                        !connection.receive().getData().isEmpty() &&
+                        !connectionMap.containsKey(connection.receive().getData())*//*) {
+
+                    userName = connection.receive().getData();
+                    if(userName != null && !userName.isEmpty() && !connectionMap.keySet().contains(userName)) {
+                        connectionMap.put(userName, connection);
+                        break;
+                    }
+
+                }
+            }*/
+            connectionMap.put(userName, connection);
+            connection.send(new Message(MessageType.NAME_ACCEPTED));
+            //ConsoleHelper.writeMessage("Name " + data + " was accessfully added to connectionMap");
+
+
+            return userName;
+        }
     }
 
     public static void main(String[] args) {
