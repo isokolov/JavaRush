@@ -1,5 +1,7 @@
 package com.javarush.task.task30.task3008;
 
+import com.javarush.task.task30.task3008.client.Client;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -105,6 +107,8 @@ public class Server {
                 while (true) {
                     Handler handler = new Handler(serverSocket.accept());
                     handler.start();
+
+
                 }
             } catch (IOException exc) {
                 ConsoleHelper.writeMessage("Connection error!");
