@@ -3,6 +3,7 @@ package com.javarush.task.task30.task3008.client;
 import com.javarush.task.task30.task3008.*;
 
 import java.io.IOException;
+import java.net.Socket;
 
 public class Client {
 
@@ -18,16 +19,23 @@ public class Client {
 
         protected void clientHandshake() throws IOException, ClassNotFoundException {
             while (!clientConnected) {
+                //if (connection.receive().getType() == MessageType.NAME_REQUEST) {
                     Message message = connection.receive();
                     if (message.getType() == MessageType.NAME_REQUEST) {
                         connection.send(new Message(MessageType.USER_NAME, getUserName()));
+
+                        //Message messageAccept = connection.receive();
                     }
                     else if (message.getType() == MessageType.NAME_ACCEPTED) {
                         notifyConnectionStatusChanged(true);
                         break;
                     }
-                    else throw new IOException("Unexpected MessageType");
+                    else// (message.getType() != MessageType.NAME_ACCEPTED && message.getType() != MessageType.NAME_REQUEST) {
+                        throw new IOException("Unexpected MessageType");
+                    //}
+                //}
             }
+
         }
 
         protected void clientMainLoop() throws IOException, ClassNotFoundException {
@@ -40,7 +48,24 @@ public class Client {
                 } else if (message.getType() == MessageType.USER_REMOVED) {
                     informAboutDeletingNewUser(message.getData());
                 } else throw new IOException("Unexpected MessageType");
+                
+            }
+        }
 
+        public void run() {
+            String serverAddress = getServerAddress();
+            int port = getServerPort();
+            try {
+                Socket socket = new Socket(serverAddress, port);
+                /*Connection clientConnection*/ connection = new Connection(socket);
+                clientHandshake();
+                clientMainLoop();
+            } catch (IOException e) {
+                //e.printStackTrace();
+                notifyConnectionStatusChanged(false);
+            } catch (ClassNotFoundException e) {
+                //e.printStackTrace();
+                notifyConnectionStatusChanged(false);
             }
         }
 
