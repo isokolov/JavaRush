@@ -14,10 +14,31 @@ public class Client {
     protected Connection connection;
     private volatile boolean clientConnected = false;
 
-    public class SocketThread extends Thread {}
+    public class SocketThread extends Thread {
+
+        protected void processIncomingMessage(String message) {
+            ConsoleHelper.writeMessage(message);
+        }
+
+        protected void informAboutAddingNewUser(String userName) {
+            ConsoleHelper.writeMessage("участник с именем " + userName + " подключился к чату.");
+        }
+
+        protected void informAboutDeletingNewUser(String userName) {
+            ConsoleHelper.writeMessage("участник с именем " + userName + " покинул чат.");
+        }
+
+        protected void notifyConnectionStatusChanged(boolean clientConnected) {
+            //connection.getRemoteSocketAddress().
+            synchronized (Client.this) {
+                Client.this.clientConnected = clientConnected;
+                Client.this.notify();
+            }
+
+        }
+    }
 
     protected String getServerAddress() {
-        //String serverAddress = ConsoleHelper.readString();
         return ConsoleHelper.readString();
     }
 
@@ -60,32 +81,20 @@ public class Client {
             ConsoleHelper.writeMessage("Произошла ошибка");
             clientConnected = false;
         }
-        //while (clientConnected) { // tried while (true)
-            /*synchronized (this) { // tried synchronized(clientSocket)
-                while (!clientConnected) {
-                    try {
-                        this.wait(); // tried clientSocket
-                    } catch (InterruptedException e) {
-                        ConsoleHelper.writeMessage("Ошибка ожидания соединения.");
-                    }
-                }
-            }*/
-            //this.notify();
-            if (clientConnected) {
-                ConsoleHelper.writeMessage("Соединение установлено. Для выхода наберите команду 'exit'.");
-            }
-            if (!clientConnected) {
-                ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента.");
-            }
-            while (clientConnected) {
-                text = ConsoleHelper.readString();
-                if (text.equals("exit")) break;
-                if (shouldSendTextFromConsole()) {
-                    sendTextMessage(text);
-                }
-            }
-        //}
 
-    //}
+        if (clientConnected) {
+            ConsoleHelper.writeMessage("Соединение установлено. Для выхода наберите команду 'exit'.");
+        }
+        if (!clientConnected) {
+            ConsoleHelper.writeMessage("Произошла ошибка во время работы клиента.");
+        }
+        while (clientConnected) {
+            text = ConsoleHelper.readString();
+            if (text.equals("exit")) break;
+            if (shouldSendTextFromConsole()) {
+                sendTextMessage(text);
+            }
+        }
+
     }
 }
