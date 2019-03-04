@@ -6,6 +6,7 @@ public class MinesweeperGame extends Game {
 
     private static final int SIDE = 9;
     private GameObject[][] gameField = new GameObject[SIDE][SIDE];
+    private int countMinesOnField;
 
     @Override
     public void initialize() {
@@ -16,9 +17,16 @@ public class MinesweeperGame extends Game {
     private void createGame() {
         for (int i = 0; i < SIDE ; i++) {
             for (int j = 0; j < SIDE; j++) {
-                gameField[i][j] = new GameObject(j, i);
+                if (getRandomNumber(10) == 9) {
+                    gameField[i][j] = new GameObject(j, i, true);
+                    countMinesOnField++;
+                }
+                else {
+                    gameField[i][j] = new GameObject(j, i, false);
+                }
                 setCellColor(j, i, Color.ORANGE);
             }
         }
+        int mineProbability = getRandomNumber(10);
     }
 }
