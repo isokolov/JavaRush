@@ -9,6 +9,10 @@ public class HashMapStorageStrategy implements StorageStrategy {
 
     private HashMap<Long, String> data = new HashMap<>();
 
+    public HashMap<Long, String> getData() {
+        return data;
+    }
+
     @Override
     public boolean containsKey(Long key) {
         return data.containsKey(key);
