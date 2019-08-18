@@ -17,6 +17,7 @@ public class Solution {
         String s = reader.readLine();
 
         s = s.replaceAll("\\s+", " ");
+        s = s.replaceAll("^ ", "");
         //System.out.println(s);
 
         //напишите тут ваш код
