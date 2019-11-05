@@ -1,9 +1,15 @@
 package com.javarush.task.task31.task3110.command;
 
-public class ZipRemoveCommand extends ZipCommand {
+import com.javarush.task.task31.task3110.Operation;
 
+public class ZipRemoveCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {
 
+    }
+
+    @Override
+    public Operation getOperation() {
+        return Operation.REMOVE;
     }
 }
