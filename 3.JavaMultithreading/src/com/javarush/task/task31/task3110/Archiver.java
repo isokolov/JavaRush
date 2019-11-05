@@ -1,27 +1,28 @@
 package com.javarush.task.task31.task3110;
 
-import com.javarush.task.task31.task3110.command.Command;
-import com.javarush.task.task31.task3110.command.ExitCommand;
+import com.javarush.task.task31.task3110.exception.WrongZipFileException;
 
-import java.nio.file.Paths;
-import java.util.Scanner;
+import java.io.IOException;
 
 public class Archiver {
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter path to archive file:");
-        String archiveFile = scanner.nextLine();
-        ZipFileManager zipFileManager = new ZipFileManager(Paths.get(archiveFile));
-        System.out.println("Enter path wich we need to archive:");
-        String targetFile = scanner.nextLine();
-        try {
-            zipFileManager.createZip(Paths.get(targetFile));
-            new ExitCommand().execute();
-        } catch (Exception e) {
-            e.getLocalizedMessage();
+    public static void main(String[] args) throws Exception {
+        for (Operation operation = null; operation != Operation.EXIT; ) {
+            try {
+                operation = askOperation();
+                CommandExecutor.execute(operation);
+            } catch (WrongZipFileException e) {
+                ConsoleHelper.writeMessage("Вы не выбрали файл архива или выбрали неверный файл.");
+            } catch (Exception e) {
+                ConsoleHelper.writeMessage("Произошла ошибка. Проверьте введенные данные.");
+            }
         }
+    }
 
-
+    public static Operation askOperation() throws IOException {
+        ConsoleHelper.writeMessage("Выберите операцию:");
+        for (Operation operation : Operation.values()) {
+            ConsoleHelper.writeMessage(String.format("%s - %s", operation.ordinal(), operation.getDescription()));
+        }
+        return Operation.values()[ConsoleHelper.readInt()];
     }
 }
