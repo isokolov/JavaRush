@@ -1,10 +1,15 @@
 package com.javarush.task.task22.task2213;
 
-public class Figure {
 
+/**
+ * Класс Figure описывает фигурку тетриса
+ */
+public class Figure {
+    // Матрица которая определяет форму фигурки: 1 - клетка не пустая, 0 - пустая
+    private int[][] matrix;
+    // Координаты
     private int x;
     private int y;
-    private int[][] matrix;
 
     public Figure(int x, int y, int[][] matrix) {
         this.x = x;
@@ -22,6 +27,22 @@ public class Figure {
 
     public int[][] getMatrix() {
         return matrix;
+    }
+
+    /**
+     * Поворачиваем фигурку.
+     * Для простоты - просто вокруг главной диагонали.
+     */
+    public void rotate() {
+        int[][] matrix2 = new int[3][3];
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                matrix2[i][j] = matrix[j][i];
+            }
+        }
+
+        matrix = matrix2;
     }
 
     /**
@@ -59,13 +80,52 @@ public class Figure {
         y++;
     }
 
-    public void rotate() {}
+    /**
+     * Двигаем фигурку вниз до тех пор, пока не залезем на кого-нибудь.
+     */
+    public void downMaximum() {
+        while (isCurrentPositionAvailable()) {
+            y++;
+        }
 
-    public void downMaximum() {}
+        y--;
+    }
 
+    /**
+     * Проверяем - может ли фигурка находится на текущей позиции:
+     * а) не выходит ли она за границы поля
+     * б) не заходит ли она на занятые клетки
+     */
     public boolean isCurrentPositionAvailable() {
+        Field field = Tetris.game.getField();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == 1) {
+                    if (y + i >= field.getHeight())
+                        return false;
+
+                    Integer value = field.getValue(x + j, y + i);
+                    if (value == null || value == 1)
+                        return false;
+                }
+            }
+        }
+
         return true;
     }
 
-    public void landed() {}
+    /**
+     * Приземляем фигурку - добавляем все ее непустые клетки к клеткам поля.
+     */
+    public void landed() {
+        Field field = Tetris.game.getField();
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (matrix[i][j] == 1)
+                    field.setValue(x + j, y + i, 1);
+            }
+        }
+    }
 }
