@@ -71,7 +71,9 @@ public class Controller {
 
     }
 
-    public void init() {}
+    public void init() {
+        createNewDocument();
+    }
 
     public void exit() { System.exit(0);}
 
