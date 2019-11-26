@@ -51,6 +51,26 @@ public class Controller {
         return writer.toString();
     }
 
+    public void createNewDocument() {
+        view.selectHtmlTab();
+        resetDocument();
+        view.setTitle("HTML редактор");
+        view.resetUndo();
+        currentFile = null;
+    }
+
+    public void openDocument() {
+
+    }
+
+    public void saveDocument() {
+
+    }
+
+    public void saveDocumentAs() {
+
+    }
+
     public void init() {}
 
     public void exit() { System.exit(0);}
