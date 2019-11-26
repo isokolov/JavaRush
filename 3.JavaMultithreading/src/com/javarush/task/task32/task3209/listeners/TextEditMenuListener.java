@@ -5,20 +5,21 @@ import com.javarush.task.task32.task3209.View;
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import java.awt.*;
 
 public class TextEditMenuListener implements MenuListener {
 
     private View view;
-    private JMenuItem undoMenuItem;
-    private JMenuItem redoMenuItem;
 
     public TextEditMenuListener(View view) {
         this.view = view;
     }
 
     @Override
-    public void menuSelected(MenuEvent e) {
-
+    public void menuSelected(MenuEvent menuEvent) {
+        for (Component component : ((JMenu) menuEvent.getSource()).getMenuComponents()) {
+            component.setEnabled(view.isHtmlTabSelected());
+        }
     }
 
     @Override
