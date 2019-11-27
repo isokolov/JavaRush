@@ -32,4 +32,8 @@ public class Model {
         restartLevel(currentLevel);
     }
 
+    public void move (Direction direction) {
+
+    }
+
 }
