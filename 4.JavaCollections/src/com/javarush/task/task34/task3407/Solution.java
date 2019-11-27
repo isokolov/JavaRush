@@ -48,6 +48,7 @@ public class Solution {
             Thread.sleep(1000);
         }
 
+        /* code added */
         public List<PhantomReference<Monkey>> getPopulatedList() {
             ReferenceQueue<Monkey> queue = new ReferenceQueue<Monkey>();
             //список призрачных ссылок
