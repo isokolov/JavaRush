@@ -98,6 +98,31 @@ public class Model {
         move();
     }
 
+    public void right() {
+        rotate();
+        rotate();
+        move();
+        rotate();
+        rotate();
+
+    }
+
+    public void up() {
+        rotate();
+        move();
+        rotate();
+        rotate();
+        rotate();
+    }
+
+    public void down() {
+        rotate();
+        rotate();
+        rotate();
+        move();
+        rotate();
+    }
+
     private void move() {
         boolean isChanged = false;
         for (Tile[] line : gameTiles) {
@@ -108,4 +133,15 @@ public class Model {
         }
     }
 
+    private void rotate() {
+        Tile[][] copy = new Tile[FIELD_WIDTH][FIELD_WIDTH];
+
+        for (int i = 0; i < FIELD_WIDTH; i++) {
+            for (int j = 0; j < FIELD_WIDTH; j++) {
+                copy[i][j] = gameTiles[j][FIELD_WIDTH - i - 1];
+            }
+        }
+        gameTiles = copy;
+    }
+    
 }
