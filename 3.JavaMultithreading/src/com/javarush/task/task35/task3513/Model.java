@@ -173,6 +173,19 @@ public class Model {
         gameTiles = copy;
     }
 
+    public void randomMove() {
+        int n = ((int) (Math.random() * 100)) % 4;
+        if (n == 0) {
+            left();
+        } else if (n == 1) {
+            up();
+        } else if (n == 2) {
+            right();
+        } else {
+            down();
+        }
+    }
+
     private Tile[][] getDeepCopy(Tile[][] tiles) {
         Tile[][] result = new Tile[FIELD_WIDTH][FIELD_WIDTH];
         for (int i = 0; i < FIELD_WIDTH; i++) {
