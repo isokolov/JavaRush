@@ -41,19 +41,24 @@ public class Model {
                 .collect(Collectors.toList());
     }
 
-    private void compressTiles(Tile[] tiles) {
+    private boolean compressTiles(Tile[] tiles) {
+        boolean result = false;
         for (int i = 0, offset = 0; i < tiles.length; i++) {
             if (tiles[i].value == 0) {
                 offset++;
             } else if (offset != 0) {
                 swap(tiles[i - offset], tiles[i]);
+                result = true;
             }
         }
+        return result;
     }
 
-    private void mergeTiles(Tile[] tiles) {
+    private boolean mergeTiles(Tile[] tiles) {
+        boolean result = false;
         for (int i = 1, offset = 1; i < tiles.length && tiles[i].value != 0; i++) {
             if (tiles[i - offset].value == tiles[i].value) {
+                result = true;
                 tiles[i - offset].value *= 2;
                 tiles[i].value = 0;
                 updateScore(tiles[i - offset]);
@@ -64,6 +69,7 @@ public class Model {
                 shiftBackCurrentTile(tiles, i, offset);
             }
         }
+        return result;
     }
 
     private void shiftBackCurrentTile(Tile[] tiles, int i, int offset) {
@@ -86,6 +92,20 @@ public class Model {
         a.value ^= b.value;
         b.value ^= a.value;
         a.value ^= b.value;
+    }
+
+    public void left() {
+        move();
+    }
+
+    private void move() {
+        boolean isChanged = false;
+        for (Tile[] line : gameTiles) {
+            isChanged = compressTiles(line) | mergeTiles(line) || isChanged;
+        }
+        if (isChanged) {
+            addTile();
+        }
     }
 
 }
