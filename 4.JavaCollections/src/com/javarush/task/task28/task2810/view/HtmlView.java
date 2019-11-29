@@ -6,7 +6,10 @@ import com.javarush.task.task28.task2810.vo.Vacancy;
 import java.util.List;
 
 public class HtmlView implements View {
-    private final String filePath = "./src/" + this.getClass().getPackage().getName().replace('.', '/') + "/vacancies.html";
+    private final String filePath =
+            "./4.JavaCollections/src/"
+                    + getClass().getPackage().getName().replace('.', '/')
+                    + "/vacancies.html";
     private Controller controller;
 
     @Override
