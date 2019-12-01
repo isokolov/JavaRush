@@ -16,6 +16,10 @@ public class Order {
         initDishes();
     }
 
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
     protected void initDishes() throws IOException {
         ConsoleHelper.writeMessage(Dish.allDishesToString());
         dishes = ConsoleHelper.getAllDishesForOrder();
@@ -40,10 +44,6 @@ public class Order {
 
     public Tablet getTablet() {
         return tablet;
-    }
-
-    public List<Dish> getDishes() {
-        return dishes;
     }
 
 }
