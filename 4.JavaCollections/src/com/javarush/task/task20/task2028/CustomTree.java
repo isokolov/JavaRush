@@ -4,68 +4,134 @@ import java.io.Serializable;
 import java.util.*;
 
 /* 
-Построй дерево(1)
+Построй дерево(5)
 */
 public class CustomTree extends AbstractList<String> implements Cloneable, Serializable {
     Entry<String> root;
-    private int size;
 
     public CustomTree() {
-        this.root = new Entry<>("root");
+        root = new Entry<>("0");
     }
 
     @Override
-    public boolean add(String s) {
+    public boolean add(String entryName) {
         Queue<Entry<String>> queue = new LinkedList<>();
-        Entry<String> parent = root;
-        while (parent != null && !parent.addChild(s)) {
-            addChildren(queue, parent);
-            parent = queue.poll();
-        }
-        size++;
-        return true;
-    }
+        queue.add(root);
 
-    public String getParent(String s) {
-        Queue<Entry<String>> queue = new LinkedList<>();
-        queue.offer(root);
         while (!queue.isEmpty()) {
-            Entry<String> current = queue.poll();
-            if (!current.availableToAddLeftChildren && current.leftChild.elementName.equals(s)
-                    || !current.availableToAddRightChildren && current.rightChild.elementName.equals(s)) {
-                return current.elementName;
+            Entry<String> entry = queue.poll();
+            if (addEntry(entry, entryName)) {
+                return true;
+            } else {
+                if (entry.leftChild != null)
+                    queue.offer(entry.leftChild);
+                if (entry.rightChild != null)
+                    queue.offer(entry.rightChild);
             }
-            addChildren(queue, current);
         }
-        return null;
+
+        return false;
     }
 
-    private void addChildren(Queue<Entry<String>> queue, Entry<String> entry) {
-        if (entry.leftChild != null) {
-            queue.offer(entry.leftChild);
-        }
-        if (entry.rightChild != null) {
-            queue.offer(entry.rightChild);
-        }
-    }
+    private boolean addEntry(Entry<String> entry, String entryName) {
+        if (entry == null)
+            return false;
 
-    @Override
-    public String get(int index) {
-        throw new UnsupportedOperationException();
+        boolean result = false;
+
+        entry.checkChildren();
+
+        if (entry.availableToAddLeftChildren) {
+            entry.leftChild = new Entry<>(entryName);
+            entry.leftChild.parent = entry;
+            result = true;
+        } else if (entry.availableToAddRightChildren) {
+            entry.rightChild = new Entry<>(entryName);
+            entry.rightChild.parent = entry;
+            result = true;
+        }
+
+        return result;
     }
 
     @Override
     public int size() {
-        return size;
+        return sizeEntry(root) - 1;
+    }
+
+    private int sizeEntry(Entry<String> entry) {
+        if (entry == null)
+            return 0;
+        return sizeEntry(entry.leftChild) + 1 + sizeEntry(entry.rightChild);
+    }
+
+    public String getParent(String entryName) {
+        return getParentEntry(root, entryName);
+    }
+
+    private String getParentEntry(Entry<String> entry, String entryName) {
+        if (entry == null)
+            return null;
+        else if (entry.elementName.equals(entryName))
+            return entry.parent.elementName;
+
+        String left = getParentEntry(entry.leftChild, entryName);
+        if (left != null)
+            return left;
+
+        String rigth = getParentEntry(entry.rightChild, entryName);
+        if (rigth != null)
+            return rigth;
+
+        return null;
     }
 
     @Override
-    public String set(int index, String element) {
-        throw new UnsupportedOperationException();
+    public boolean remove(Object o) {
+        if (!o.getClass().equals(String.class))
+            throw new UnsupportedOperationException();
+
+        return removeEntry(root, o.toString());
+    }
+
+    private boolean removeEntry(Entry<String> entry, String entryName) {
+        if (entry == null)
+            return false;
+
+        if (entry.leftChild != null) {
+            if (entry.leftChild.elementName.equals(entryName)) {
+                entry.leftChild = null;
+                entry.availableToAddLeftChildren = true;
+                return true;
+            } else {
+                if (removeEntry(entry.leftChild, entryName)) {
+                    return true;
+                }
+            }
+        }
+
+        if (entry.rightChild != null) {
+            if (entry.rightChild.elementName.equals(entryName)) {
+                entry.rightChild = null;
+                entry.availableToAddRightChildren = true;
+                return true;
+            } else {
+                if (removeEntry(entry.rightChild, entryName)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     @Override
     public void add(int index, String element) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String set(int index, String element) {
         throw new UnsupportedOperationException();
     }
 
@@ -89,13 +155,16 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    public String get(int index) {
+        throw new UnsupportedOperationException();
+    }
+
     static class Entry<T> implements Serializable {
         String elementName;
-        boolean availableToAddLeftChildren;
-        boolean availableToAddRightChildren;
-        Entry<T> parent;
-        Entry<T> leftChild;
-        Entry<T> rightChild;
+        int lineNumber;
+        boolean availableToAddLeftChildren, availableToAddRightChildren;
+        Entry<T> parent, leftChild, rightChild;
 
         public Entry(String elementName) {
             this.elementName = elementName;
@@ -103,7 +172,7 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
             this.availableToAddRightChildren = true;
         }
 
-        void checkChildren() {
+        public void checkChildren() {
             if (leftChild != null)
                 availableToAddLeftChildren = false;
             if (rightChild != null)
@@ -112,22 +181,6 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
 
         public boolean isAvailableToAddChildren() {
             return availableToAddLeftChildren || availableToAddRightChildren;
-        }
-
-        public boolean addChild(String name) {
-            if (!isAvailableToAddChildren()) {
-                return false;
-            }
-            Entry<T> child = new Entry<>(name);
-            child.parent = this;
-            if (availableToAddLeftChildren) {
-                leftChild = child;
-                availableToAddLeftChildren = false;
-            } else {
-                rightChild = child;
-                availableToAddRightChildren = false;
-            }
-            return true;
         }
     }
 }
