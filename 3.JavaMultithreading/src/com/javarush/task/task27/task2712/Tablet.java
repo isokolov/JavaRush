@@ -1,12 +1,15 @@
 package com.javarush.task.task27.task2712;
 
 import com.javarush.task.task27.task2712.ad.AdvertisementManager;
+import com.javarush.task.task27.task2712.ad.NoVideoAvailableException;
 import com.javarush.task.task27.task2712.kitchen.Order;
 
 import java.io.IOException;
 import java.util.Observable;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static java.util.logging.Level.INFO;
+import static java.util.logging.Level.SEVERE;
 
 public class Tablet extends Observable {
     protected final int number;
@@ -21,23 +24,22 @@ public class Tablet extends Observable {
     }
 
     public Order createOrder() {
-        try
-        {
-            Order order = new Order(this);
-            if(order.isEmpty())
-                return null;
+        Order order = null;
 
-            ConsoleHelper.writeMessage(order.toString());
-            new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
-            setChanged();
-            notifyObservers(order);
-            return order;
+        try {
+            order = new Order(this);
+            if(!order.isEmpty()){
+                setChanged();
+                notifyObservers(order);
+                new AdvertisementManager(order.getTotalCookingTime() * 60).processVideos();
+            }
+        } catch (IOException e) {
+            logger.log(SEVERE, "Console is unavailable.");
+        } catch (NoVideoAvailableException e) {
+            logger.log(INFO, String.format("No video is available for the order %s", order));
         }
-        catch (IOException e)
-        {
-            logger.log(Level.SEVERE, "Console is unavailable.");
-        }
-        return null;
+
+        return order;
     }
 
     @Override
