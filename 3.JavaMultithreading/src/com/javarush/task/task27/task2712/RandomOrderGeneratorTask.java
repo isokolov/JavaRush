@@ -3,8 +3,8 @@ package com.javarush.task.task27.task2712;
 import java.util.List;
 
 public class RandomOrderGeneratorTask implements Runnable {
-    private List<Tablet> tablets;
-    private int interval;
+    private final List<Tablet> tablets;
+    private final int interval;
 
     public RandomOrderGeneratorTask(List<Tablet> tablets, int interval) {
         this.tablets = tablets;
@@ -13,15 +13,12 @@ public class RandomOrderGeneratorTask implements Runnable {
 
     @Override
     public void run() {
-        if (tablets.isEmpty()) return;
-
         while (!Thread.currentThread().isInterrupted()) {
-            Tablet tablet = tablets.get((int) Math.random() * tablets.size());
-            tablet.createTestOrder();
+            tablets.get((int) (Math.random() * tablets.size())).createTestOrder();
             try {
                 Thread.sleep(interval);
             } catch (InterruptedException e) {
-                return;
+                Thread.currentThread().interrupt();
             }
         }
     }

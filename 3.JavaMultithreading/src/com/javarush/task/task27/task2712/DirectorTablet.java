@@ -10,7 +10,7 @@ import java.util.*;
 public class DirectorTablet {
     public void printAdvertisementProfit() {
         long total = 0;
-        for (Map.Entry<Date, Long> entry: StatisticManager.getInstance().advertisementProfit().entrySet()) {
+        for (Map.Entry<Date, Double> entry: StatisticManager.getInstance().getProfitReport().entrySet()) {
             ConsoleHelper.writeMessage(String.format("%s - %.2f", new SimpleDateFormat("dd-MMM-yyyy", Locale.US).format(entry.getKey()), entry.getValue() / 100.0));
             total += entry.getValue();
         }
@@ -18,7 +18,7 @@ public class DirectorTablet {
     }
 
     public void printCookWorkloading() {
-        Map<Date, Map<String, Integer>> map = StatisticManager.getInstance().cookWorkloading();
+        Map<Date, Map<String, Integer>> map = StatisticManager.getInstance().getCooksReport();
         for (Map.Entry entry : map.entrySet()) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
             String date = simpleDateFormat.format(entry.getKey());

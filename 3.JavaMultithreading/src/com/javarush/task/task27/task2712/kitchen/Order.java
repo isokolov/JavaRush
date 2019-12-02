@@ -4,8 +4,8 @@ import com.javarush.task.task27.task2712.ConsoleHelper;
 import com.javarush.task.task27.task2712.Tablet;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Order {
     private final Tablet tablet;
@@ -18,12 +18,22 @@ public class Order {
 
     @Override
     public String toString() {
-        return dishes.size() != 0 ?
-                String.format("Your order: %s of %s", Arrays.toString(dishes.toArray()), tablet) : "";
+        return dishes.isEmpty()
+                ? ""
+                : String
+                .format(
+                        "Your order: [%s] of %s",
+                        dishes.stream().map(Enum::name).collect(Collectors.joining(", ")),
+                        tablet.toString()
+                );
     }
 
-    public int getTotalCookingTime(){
-        return dishes.stream().mapToInt((s)->s.getDuration()).sum();
+    public int getTotalCookingTime() {
+        return dishes.stream().mapToInt(Dish::getDuration).sum();
+    }
+
+    public boolean isEmpty() {
+        return dishes.isEmpty();
     }
 
     public List<Dish> getDishes() {
@@ -34,12 +44,8 @@ public class Order {
         return tablet;
     }
 
-    public boolean isEmpty(){
-        return dishes.isEmpty();
-    }
 
     protected void initDishes() throws IOException {
-        ConsoleHelper.writeMessage(Dish.allDishesToString());
-        dishes = ConsoleHelper.getAllDishesForOrder();
+        this.dishes = ConsoleHelper.getAllDishesForOrder();
     }
 }
