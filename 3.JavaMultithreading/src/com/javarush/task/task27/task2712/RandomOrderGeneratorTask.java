@@ -1,10 +1,11 @@
 package com.javarush.task.task27.task2712;
 
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomOrderGeneratorTask implements Runnable {
-    private final List<Tablet> tablets;
-    private final int interval;
+    private List<Tablet> tablets;
+    private int interval;
 
     public RandomOrderGeneratorTask(List<Tablet> tablets, int interval) {
         this.tablets = tablets;
@@ -13,13 +14,17 @@ public class RandomOrderGeneratorTask implements Runnable {
 
     @Override
     public void run() {
-        while (!Thread.currentThread().isInterrupted()) {
-            tablets.get((int) (Math.random() * tablets.size())).createTestOrder();
-            try {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                if (tablets.size() > 0) {
+                    tablets.get(ThreadLocalRandom.current().nextInt(tablets.size())).createTestOrder();
+                }
+                else {
+                    break;
+                }
                 Thread.sleep(interval);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
             }
-        }
+        } catch (InterruptedException e) { return;}
+
     }
 }
